@@ -16,27 +16,28 @@ $(".saveBtn").on("click", function () {
 // console.log(moment().hour())
 // console.log($(".time-block").attr("id"))
 
-// color cordinate time slots
+// color cordinate time slots depending on what hour of the day it is
 var timeBlockColorHandler = function () {
     // console.log(moment().format("H"))
-    rightNow = moment().hour()
-    console.log(rightNow)
+    currentHour = moment().hour()
+    console.log(currentHour)
 
     // grabs each time-block class element and looks for id
     $(".time-block").each(function () {
-        if ($(this).attr("id") < rightNow) {
+        if ($(this).attr("id") < currentHour) {
             $(this).children(".description").addClass("past") // gray
         }
-        else if ($(this).attr("id") > rightNow) {
+        else if ($(this).attr("id") > currentHour) {
             $(this).children(".description").addClass("future") // green
         }
-        else if ($(this).attr("id") == rightNow) {
+        else if ($(this).attr("id") == currentHour) {
             $(this).children(".description").addClass("present") // red
         }
     })
 }
 
-// get items from local storage and display on page
+// select the value from the description class in the specified ID 
+// and display on page the the info from local storage
 $("#9 .description").val(localStorage.getItem("9"))
 $("#10 .description").val(localStorage.getItem("10"))
 $("#11 .description").val(localStorage.getItem("11"))
@@ -49,6 +50,11 @@ $("#17 .description").val(localStorage.getItem("17"))
 
 // call function to color cordinate time slots
 timeBlockColorHandler()
+
+// run the timeBlockColorHandler function every 30 minutes so that the color updates
+setInterval(function () {
+    timeBlockColorHandler()
+}, 1800000) // 30 minutes
 
 
 
