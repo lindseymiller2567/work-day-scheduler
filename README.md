@@ -15,5 +15,5 @@ https://lindseymiller2567.github.io/work-day-scheduler/
 ## Contribution
 Created by Lindsey Dubnicka
 
-## Screen Shot of Portfolio web page
+## Screen Shot of web page
 ![ScreenShot](./assets/images/work-day-schedule-screenshot.png)

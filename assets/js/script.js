@@ -20,7 +20,7 @@ $(".saveBtn").on("click", function () {
 var timeBlockColorHandler = function () {
     // console.log(moment().format("H"))
     currentHour = moment().hour()
-    console.log(currentHour)
+    // console.log(currentHour)
 
     // grabs each time-block class element and looks for id
     $(".time-block").each(function () {
@@ -48,13 +48,15 @@ $("#15 .description").val(localStorage.getItem("15"))
 $("#16 .description").val(localStorage.getItem("16"))
 $("#17 .description").val(localStorage.getItem("17"))
 
+// run the timeBlockColorHandler function every 30 minutes so that the color updates without having to refresh page
+setInterval(function () {
+    // console.log("testing the set interval function")
+    timeBlockColorHandler()
+}, 1800000) // 1800000 = 30 minutes
+
 // call function to color cordinate time slots
 timeBlockColorHandler()
 
-// run the timeBlockColorHandler function every 30 minutes so that the color updates
-setInterval(function () {
-    timeBlockColorHandler()
-}, 1800000) // 30 minutes
 
 
 
